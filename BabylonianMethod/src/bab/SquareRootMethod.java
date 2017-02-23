@@ -21,6 +21,10 @@ public class SquareRootMethod {
 		
 		double acceptableError = (((lastGuess - guess) / lastGuess)*100);
 		
+		if(errorPercent <= acceptableError)
+		{
+			return guess;
+		}
 		
 		
 	}
