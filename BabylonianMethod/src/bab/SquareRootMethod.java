@@ -17,9 +17,14 @@ public class SquareRootMethod {
 		errorPercent = error;
 		
 	}
-	public int squareRoot()
+	public double squareRoot()
 	{
 		
+	}
+	
+	public double getNumSquared()
+	{
+		return numThatIsSquared;
 	}
 	
 }
