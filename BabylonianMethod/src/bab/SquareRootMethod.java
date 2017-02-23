@@ -4,8 +4,9 @@ public class SquareRootMethod {
 	
 	private double numThatIsSquared;
 	private double errorPercent;
+	private double guess = numThatIsSquared / 2;
 	
-	public SquareRootMethod()
+	public static void main(String args[])
 	{
 		
 	}
@@ -14,6 +15,11 @@ public class SquareRootMethod {
 	{
 		numThatIsSquared = num;
 		errorPercent = error;
+		
+	}
+	public int squareRoot()
+	{
+		
 	}
 	
 }
