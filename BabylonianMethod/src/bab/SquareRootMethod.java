@@ -25,7 +25,8 @@ public class SquareRootMethod {
 		{
 			return guess;
 		}
-		
+		double newGuess = .5 * (guess + (getNumSquared() / guess));
+		return squareRoot(newGuess, error);
 		
 	}
 	
