@@ -4,10 +4,8 @@ public class SquareRootMethod {
 	
 	private static double numThatIsSquared;
 	private static double errorPercent;
-	private static double guess = numThatIsSquared / 2;
-	private static double lastGuess = guess;
-	
-	
+	private static double guess;
+	private static double acceptableError = (((numThatIsSquared - guess) / numThatIsSquared)*100);
 	
 	public SquareRootMethod()
 	{
@@ -18,15 +16,17 @@ public class SquareRootMethod {
 	{
 		numThatIsSquared = num;
 		errorPercent = error;
+		guess = numThatIsSquared / 2;
+	
+		acceptableError = (((num - guess) / num)*100);
+	
 		
-		double acceptableError = (((lastGuess - guess) / lastGuess)*100);
-		
-		if(errorPercent <= acceptableError)
+		if(errorPercent >= acceptableError)
 		{
-			return guess;
+			return numThatIsSquared;
 		}
-		double newGuess = .5 * (guess + (getNumSquared() / guess));
-		return squareRoot(newGuess, error);
+		double newGuess = .5 * (guess + (num / guess));
+		return squareRoot(newGuess, errorPercent);
 		
 	}
 	
@@ -38,6 +38,6 @@ public class SquareRootMethod {
 	
 	public static void main(String args[])
 	{
-		squareRoot(4, 0);
+		System.out.println(squareRoot(16, 1));
 	}
 }
