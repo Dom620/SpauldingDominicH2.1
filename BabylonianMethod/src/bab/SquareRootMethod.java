@@ -21,11 +21,14 @@ public class SquareRootMethod {
 				
 				
 		acceptableError = (((lastGuess - guess) / lastGuess) * 100);
+		System.out.println(acceptableError);
 		
 		if(errorPercent <= acceptableError)
 		{
+			System.out.println(errorPercent);
 			double newGuess = .5 * (lastGuess + (num / lastGuess));
-			return squareRoot(num, newGuess, acceptableError);
+			System.out.println(errorPercent);
+			return squareRoot(num, newGuess, errorPercent);
 		}
 		
 		return lastGuess;
