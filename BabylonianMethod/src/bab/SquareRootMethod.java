@@ -5,37 +5,36 @@ public class SquareRootMethod {
 	
 	private static double errorPercent;
 	private static double guess;
-	private static double acceptableError = (((numThatIsSquared - guess) / numThatIsSquared)*100);
-	private static double lastGuess = guess;
+	private static double acceptableError;
+	private static double lastGuess;
 	
 	public SquareRootMethod()
 	{
 		
 	}
 	
-	public static double squareRoot(double num, double error)
+	public static double squareRoot(double num, double initialGuess, double error)
 	{
-		lastGuess = num;
 		errorPercent = error;
-		guess = numThatIsSquared / 2;
+		lastGuess = initialGuess;
+		guess = initialGuess / 2;
+				
+				
+		acceptableError = (((lastGuess - guess) / lastGuess) * 100);
 		
-		acceptableError = (((lastGuess - guess) / lastGuess)*100);
-	
-		
-		if(errorPercent >= acceptableError)
+		if(errorPercent <= acceptableError)
 		{
-			return lastGuess;
+			double newGuess = .5 * (lastGuess + (num / lastGuess));
+			return squareRoot(num, newGuess, acceptableError);
 		}
-		double newGuess = .5 * (guess + (num / guess));
-		lastGuess = guess;
-		return squareRoot(newGuess, errorPercent);
 		
+		return lastGuess;
 	}
 	
 	
 	
 	public static void main(String args[])
 	{
-		System.out.println(squareRoot(16, 1));
+		System.out.println(squareRoot(16, 6, 20));
 	}
 }
