@@ -2,10 +2,11 @@ package bab;
 
 public class SquareRootMethod {
 	
-	private static double numThatIsSquared;
+	
 	private static double errorPercent;
 	private static double guess;
 	private static double acceptableError = (((numThatIsSquared - guess) / numThatIsSquared)*100);
+	private static double lastGuess = guess;
 	
 	public SquareRootMethod()
 	{
@@ -14,26 +15,23 @@ public class SquareRootMethod {
 	
 	public static double squareRoot(double num, double error)
 	{
-		numThatIsSquared = num;
+		lastGuess = num;
 		errorPercent = error;
 		guess = numThatIsSquared / 2;
-	
-		acceptableError = (((num - guess) / num)*100);
+		
+		acceptableError = (((lastGuess - guess) / lastGuess)*100);
 	
 		
 		if(errorPercent >= acceptableError)
 		{
-			return numThatIsSquared;
+			return lastGuess;
 		}
 		double newGuess = .5 * (guess + (num / guess));
+		lastGuess = guess;
 		return squareRoot(newGuess, errorPercent);
 		
 	}
 	
-	public static double getNumSquared()
-	{
-		return numThatIsSquared;
-	}
 	
 	
 	public static void main(String args[])
